@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "YourName",
+  "classifications": ["Worker", "Async", "Background", "Clean Architecture"],
+  "identity": "WorkerAsync.Template",
+  "name": "Async-Safe Worker Service",
+  "shortName": "worker-async",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "WorkerService",
+  "preferNameDirectory": true,
+  "guids": ["d2a1e1b2-1234-4cde-9abc-123456789abc"],
+  "primaryOutputs": [
+    { "path": "src/Worker/Program.cs" },
+    { "path": "src/Worker/WorkerService.cs" }
+  ],
+  "parameters": [
+    {
+      "name": "queueType",
+      "type": "choice",
+      "choices": ["RabbitMQ", "Kafka", "SQS", "AzureQueue"],
+      "defaultValue": "RabbitMQ",
+      "description": "Select the queue technology."
+    },
+    {
+      "name": "schedulerType",
+      "type": "choice",
+      "choices": ["Cron", "TimedLoop"],
+      "defaultValue": "TimedLoop",
+      "description": "Select the scheduling type."
+    },
+    {
+      "name": "loggingFramework",
+      "type": "choice",
+      "choices": ["Serilog", "NLog"],
+      "defaultValue": "Serilog",
+      "description": "Select the logging framework."
+    },
+    {
+      "name": "orm",
+      "type": "choice",
+      "choices": ["EFCore", "Dapper", "None"],
+      "defaultValue": "EFCore",
+      "description": "Select the ORM/database technology."
+    },
+    {
+      "name": "maxConcurrency",
+      "type": "parameter",
+      "datatype": "int",
+      "defaultValue": "3",
+      "description": "Maximum number of concurrent jobs."
+    },
+    {
+      "name": "intervalSeconds",
+      "type": "parameter",
+      "datatype": "int",
+      "defaultValue": "60",
+      "description": "Job execution interval in seconds."
+    }
+     ,
+      {
+        "name": "healthChecks",
+        "type": "choice",
+        "choices": ["Enabled", "Disabled"],
+        "defaultValue": "Enabled",
+        "description": "Enable health check endpoints."
+      },
+      {
+        "name": "metrics",
+        "type": "choice",
+        "choices": ["Prometheus", "OpenTelemetry", "None"],
+        "defaultValue": "None",
+        "description": "Enable metrics collection."
+      },
+      {
+        "name": "distributedLocking",
+        "type": "choice",
+        "choices": ["Redis", "Sql", "InMemory", "None"],
+        "defaultValue": "None",
+        "description": "Select distributed locking provider."
+      },
+      {
+        "name": "retryPolicy",
+        "type": "choice",
+        "choices": ["Polly", "Custom", "None"],
+        "defaultValue": "Polly",
+        "description": "Enable retry policies for operations."
+      },
+      {
+        "name": "deadLetterQueue",
+        "type": "choice",
+        "choices": ["Enabled", "Disabled"],
+        "defaultValue": "Disabled",
+        "description": "Enable dead letter queue for failed messages."
+      },
+      {
+        "name": "customStartupTasks",
+        "type": "choice",
+        "choices": ["Enabled", "Disabled"],
+        "defaultValue": "Disabled",
+        "description": "Run custom startup tasks (e.g., migrations, warm-up)."
+      }
+  ]
+}
