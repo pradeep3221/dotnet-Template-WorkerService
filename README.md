@@ -1,6 +1,8 @@
 # Async-Safe Worker Service Template
 
 A redistributable .NET 9 Worker Service template following Clean Architecture principles and async-safe defaults.
+<p>
+For Background services or Microservice
 
 ## Features
 - **Async Execution:** All services and repositories use async/await for scalability and reliability.
@@ -276,3 +278,4 @@ Custom startup tasks allow you to run migrations, warm-up routines, or other ini
 
 ## License
 MIT
+
